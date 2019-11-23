@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Documentation available at: http://wiki.ros.org/web_video_server -->
+
+<launch>
+
+    <!-- Launch prefix (e.g. for debugging) -->
+    <arg name="launch_prefix" default=""/>
+
+    <!-- web_video_server arguments -->
+    <arg name="port"            default="8080" />
+    <arg name="address"         default="0.0.0.0" />
+    <arg name="server_threads"  default="1" />
+    <arg name="ros_threads"     default="2" />
+    <arg name="type"            default="mjpeg" />
+    <arg name="topic"           default="" />
+    <arg name="publish_rate"    default="-1" />
+    <arg name="verbose"         default="true" />
+    <arg name="default_stream_type"    default="mjpeg" />
+
+
+    <!-- Start web video server -->
+    <node pkg="web_video_server" type="web_video_server" name="web_video_server" output="screen" launch-prefix="$(arg launch_prefix)">
+        <param name="port"              value="$(arg port)" />
+        <param name="address"           value="$(arg address)" />
+        <param name="server_threads"    value="$(arg server_threads)" />
+        <param name="ros_threads"       value="$(arg ros_threads)" />
+        <param name="type"              value="$(arg type)" />
+        <param name="topic"             value="$(arg topic)" />
+        <param name="publish_rate"      value="$(arg publish_rate)" />
+        <param name="verbose"           value="$(arg verbose)" />
+        <param name="default_stream_type"   value="(arg default_stream_type)" />
+    </node>
+
+</launch>
